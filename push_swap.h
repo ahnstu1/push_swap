@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 14:15:45 by hahn              #+#    #+#             */
-/*   Updated: 2022/06/16 00:13:13 by hahn             ###   ########.fr       */
+/*   Created: 2022/06/15 20:43:11 by hahn              #+#    #+#             */
+/*   Updated: 2022/06/15 22:59:44 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-char	*ft_strjoin(char const *s1, char const *s2)
+typedef struct s_ps
 {
-	char	*output;
-	int		idx;
+    struct s_ps *prev;
+    struct s_ps *next;
+    int         num;
+}   t_ps;
 
-	idx = 0;
-	output = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
-	if (!output)
-		return (0);
-	while (*s1)
-		output[idx++] = *(s1++);
-	output[idx++] = ' ';
-	while (*s2)
-		output[idx++] = *(s2++);
-	output[idx] = '\0';
-	return (output);
-}
+#endif

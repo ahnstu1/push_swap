@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 17:46:02 by hahn              #+#    #+#             */
-/*   Updated: 2021/12/10 20:34:43 by hahn             ###   ########.fr       */
+/*   Updated: 2022/06/15 22:58:10 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int			*content;
 	struct s_list	*next;
 }	t_list;
 
