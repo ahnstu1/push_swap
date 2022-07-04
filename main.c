@@ -6,69 +6,58 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 20:25:56 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/04 21:02:27 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	argv_check(char	**argv)
+t_ps	*stack_init(t_ps **stack, char **argv)
 {
-	int	idx;
-	int	check;
+	t_ps    *cur;
+    int     idx;
+    int     num;
 
-	idx = 1;
-	while (argv[idx])
-	{
-		check = 0;
-		while (!ft_isdigit(argv[idx][check]) && argv[idx][check])
-			check++;
-		if (!argv[idx][check])
-			return (1);
-		idx++;
-	}
-	return (0);
+    idx = 0;
+    *stack = t_ps_new_node(ft_atoi(argv[idx]), NULL, NULL);
+    cur = *stack;
+    while (argv[++idx])
+    {
+        num = ft_atoi(argv[idx]);
+        cur -> next = t_ps_new_node(ft_atoi(argv[idx]), NULL, cur);
+		cur = cur -> next;
+    }
+	return (*stack);
 }
 
-char	*convert(char **argv)
+/*
+void	lst_test(t_ps *lst)
 {
-	char	*ret;
-	char	*tmp;
 	int		idx;
 
-	idx = 1;
-	ret = ft_strdup(argv[1]);
-	while (argv[++idx] != NULL)
-	{
-		tmp = ret;
-		ret = ft_strjoin(ret, argv[idx]);
-		free(tmp);
-	}
-	if (!ret)
-		err_msg();
-	return (ret);
-}
-
-void	split_free(char **input)
-{
-	int	idx;
-
 	idx = 0;
-	while (input[idx])
-		idx++;
-	while (idx == -1)
-		free(input[idx--]);
+	if (lst -> prev == NULL)
+		printf("\n lst -> prev is NULL \n");
+	while (lst -> next)
+	{
+		printf("\n idx : %d, num : %d \n", idx++, lst -> num);
+		lst = lst -> next;
+	}
+	printf("\n idx : %d, num : %d \n", idx, lst -> num);
+	printf("\n reverse start \n");
+	while (lst -> prev)
+	{
+		printf("\n idx : %d, num : %d \n", idx--, lst -> num);
+		lst = lst -> prev;
+	}
+	printf("\n idx : %d, num : %d \n", idx, lst -> num);
 }
-
-int	err_msg(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
+*/
 
 int	main(int argc, char **argv)
 {
 	t_ps	*lst;
+	t_ps	*stack_a;
 	char	*convert_argv;
 	char	**split_argv;
 
@@ -80,7 +69,8 @@ int	main(int argc, char **argv)
 		err_msg();
 	free(convert_argv);
 	lst = lst_init(&lst, split_argv);
-	split_free(split_argv);
 	if (!lst)
 		err_msg();
+	stack_init(&stack_a, split_argv);
+	split_free(split_argv);
 }

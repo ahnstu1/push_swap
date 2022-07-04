@@ -6,7 +6,7 @@
 #    By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 16:30:03 by hahn              #+#    #+#              #
-#    Updated: 2022/07/04 18:12:12 by hahn             ###   ########.fr        #
+#    Updated: 2022/07/04 20:56:16 by hahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ LIBFT = libft
 NAME = push_swap
 OBJS = main.o \
 		lst.o \
-		rule.o
+		rule.o \
+		err.o
 
 all: $(NAME)
 
