@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:10:38 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 17:14:50 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/04 20:24:39 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,12 @@ void	lst_free(t_ps** lst)
 	cur = *lst;
 	while (cur -> next)
 		cur = cur -> next;
-	while (cur -> prev -> prev)
+	while (cur -> prev)
 	{
 		cur = cur -> prev;
 		free(cur -> next);
 	}
+	free (cur);
 }
 
 t_ps *lst_init(t_ps **lst, char **argv)
