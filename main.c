@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 17:19:29 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/04 19:49:11 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,26 +64,42 @@ int	err_msg(void)
 	return (0);
 }
 
-void	lst_test(t_ps **lst)
+void	lst_test(t_ps *lst)
 {
-	t_ps	*cur;
 	int		idx;
 
 	idx = 0;
-	cur = *lst;
-	while (cur -> prev)
-		cur = cur -> prev;
-	while (cur -> next)
+	if (lst -> prev == NULL)
+		printf("\n lst -> prev is NULL \n");
+	while (lst -> next)
 	{
-		printf("\n idx : %d, num : %d \n", idx++, cur -> num);
-		cur = cur -> next;
+		printf("\n idx : %d, num : %d \n", idx++, lst -> num);
+		lst = lst -> next;
 	}
-	printf("\n idx : %d, num : %d \n", idx, cur -> num);
+	printf("\n idx : %d, num : %d \n", idx, lst -> num);
+	printf("\n reverse start \n");
+	while (lst -> prev)
+	{
+		printf("\n idx : %d, num : %d \n", idx--, lst -> num);
+	}
+	printf("\n idx : %d, num : %d \n", idx, lst -> num);
+}
+
+t_ps	*lst_head_finder(t_ps *lst)
+{
+	t_ps *ret;
+
+	ret = lst;
+	while (ret -> prev)
+		ret = ret -> prev;
+	return (ret);
 }
 
 int	main(int argc, char **argv)
 {
 	t_ps	*lst;
+	t_ps	*lst_head_testing;
+	t_ps	*new_lst_test;
 	char	*convert_argv;
 	char	**split_argv;
 
@@ -99,9 +115,16 @@ int	main(int argc, char **argv)
 	lst = lst_init(&lst, split_argv);
 	if (!lst)
 		return (err_msg());
-	lst_test(&lst);
+	lst_head_testing = lst_head_finder(lst);
+	lst_test(lst_head_testing);
+	lst_head_testing = swap(lst_head_testing);
+	lst_test(lst_head_testing);
+	lst_head_testing = push(lst_head_testing, new_lst_test);
+	lst_test(lst_head_testing);
+	lst_test(new_lst_test);
+	lst_head_testing = rotate(lst_head_testing);
+	lst_test(lst_head_testing);
+	lst_head_testing = reverse_rotate(lst_head_testing);
+	lst_test(lst_head_testing);
 	split_free(split_argv);
 }
-
-//gcc main.c libft/ft_strjoin.c libft/ft_strlen.c libft/ft_strdup.c libft/ft_split.c libft/ft_atoi.c libft/ft_itoa.c libft/ft_isdigit.c -o push_swap
-//gcc -fsanitize=address -g main.c libft/ft_strjoin.c libft/ft_strlen.c libft/ft_strdup.c libft/ft_split.c libft/ft_atoi.c libft/ft_itoa.c libft/ft_isdigit.c -o push_swap
