@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:24:52 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 19:46:12 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/04 20:07:33 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,34 @@
     t_ps   *next;
 
     if (!cur || !cur -> next)
-        return ;
+        return (cur);
     next = cur -> next;
-    cur -> next = next -> next;
-    next -> prev = NULL;
-    next -> next = cur;
-    cur -> prev = next;
+	cur -> next = next -> next;
+	next -> next -> prev = cur;
+	cur -> prev = next;
+	next -> next = cur;
+	next -> prev = NULL;
 	return (next);
  }
 
- t_ps	*push(t_ps *in, t_ps *out)
+ t_ps	*push(t_ps **in, t_ps *out)
  {
 	t_ps	*ret;
 
 	if (!out)
 		return (NULL);
 	ret = out -> next;
-	if (!in)
+	if (!*in)
 	{
-		in = out;
+		*in = out;
 		out -> next = NULL;
 	}
 	else
 	{
-		in -> prev = out;
-		ret -> prev = NULL;
-		out -> next = in;
+		(*in) -> prev = out;
+		out -> next = *in;
 	}
+	ret -> prev = NULL;
 	return (ret);
  }
 

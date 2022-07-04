@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 19:49:11 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/04 20:04:55 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	lst_test(t_ps *lst)
 	while (lst -> prev)
 	{
 		printf("\n idx : %d, num : %d \n", idx--, lst -> num);
+		lst = lst -> prev;
 	}
 	printf("\n idx : %d, num : %d \n", idx, lst -> num);
 }
@@ -99,7 +100,7 @@ int	main(int argc, char **argv)
 {
 	t_ps	*lst;
 	t_ps	*lst_head_testing;
-	t_ps	*new_lst_test;
+	t_ps	*new_lst_test = NULL;
 	char	*convert_argv;
 	char	**split_argv;
 
@@ -118,13 +119,23 @@ int	main(int argc, char **argv)
 	lst_head_testing = lst_head_finder(lst);
 	lst_test(lst_head_testing);
 	lst_head_testing = swap(lst_head_testing);
+	printf("\n swap complete \n");
 	lst_test(lst_head_testing);
-	lst_head_testing = push(lst_head_testing, new_lst_test);
+	printf("\n swap test complete \n");
+	lst_head_testing = push(&new_lst_test, lst_head_testing);
+	printf("\n push complete \n");
 	lst_test(lst_head_testing);
+	printf("\n push lst test complete \n");
+	printf("\n new lst = %p\n", new_lst_test);
 	lst_test(new_lst_test);
+	printf("\n push new lst test complete \n");
 	lst_head_testing = rotate(lst_head_testing);
+	printf("\n rotate complete \n");
 	lst_test(lst_head_testing);
+	printf("\n rotate test complete \n");
 	lst_head_testing = reverse_rotate(lst_head_testing);
+	printf("\n reverse_rotate complete \n");
 	lst_test(lst_head_testing);
+	printf("\n reverse_rotate test complete \n");
 	split_free(split_argv);
 }
