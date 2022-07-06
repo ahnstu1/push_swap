@@ -6,13 +6,13 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:10:38 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 20:53:14 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/06 11:24:36 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_ps    *t_ps_new_node(int num, t_ps *next, t_ps *prev)
+t_ps	*t_ps_new_node(int num, t_ps *next, t_ps *prev)
 {
 	t_ps	*output;
 
@@ -21,11 +21,11 @@ t_ps    *t_ps_new_node(int num, t_ps *next, t_ps *prev)
 		return (0);
 	output -> num = num;
 	output -> next = next;
-    output -> prev = prev;
+	output -> prev = prev;
 	return (output);
 }
 
-int insert_next(t_ps **lst, int num)
+int	insert_next(t_ps **lst, int num)
 {
 	t_ps	*cur;
 	t_ps	*tmp;
@@ -49,9 +49,9 @@ int insert_next(t_ps **lst, int num)
 	return (0);
 }
 
-int insert_prev(t_ps **lst, int num)
+int	insert_prev(t_ps **lst, int num)
 {
-    t_ps	*cur;
+	t_ps	*cur;
 	t_ps	*tmp;
 
 	cur = *lst;
@@ -73,7 +73,7 @@ int insert_prev(t_ps **lst, int num)
 	return (0);
 }
 
-void	lst_free(t_ps** lst)
+void	lst_free(t_ps **lst)
 {
 	t_ps	*cur;
 
@@ -88,29 +88,28 @@ void	lst_free(t_ps** lst)
 	free (cur);
 }
 
-t_ps *lst_init(t_ps **lst, char **argv)
+t_ps	*lst_init(t_ps **lst, char **argv)
 {
-    t_ps    *cur;
-    int     idx;
-    int     num;
-    int     err;
+	t_ps	*cur;
+	int		idx;
+	int		num;
+	int		err;
 
-    idx = 0;
-    *lst = t_ps_new_node(ft_atoi(argv[idx]), NULL, NULL);
-    cur = *lst;
-    while (argv[++idx])
-    {
-        num = ft_atoi(argv[idx]);
-        if (cur -> num > num)
+	idx = 0;
+	*lst = t_ps_new_node(ft_atoi(argv[idx]), NULL, NULL);
+	cur = *lst;
+	while (argv[++idx])
+	{
+		num = ft_atoi(argv[idx]);
+		if (cur -> num > num)
 			err = insert_prev(&cur, num);
-        else
-            err = insert_next(&cur, num);
+		else
+			err = insert_next(&cur, num);
 		if (err)
 		{
 			lst_free(lst);
 			return (NULL);
 		}
-    }
+	}
 	return (cur);
 }
-

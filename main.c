@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/06 11:18:22 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/06 11:31:32 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ int	main(int argc, char **argv)
 		err_msg();
 	free(convert_argv);
 	lst = lst_init(&lst, split_argv);
-	//lst_test(lst);
 	if (!lst)
 		err_msg();
 	stack_init(&stack_a, lst_front(lst), split_argv);
-	//lst_test(stack_a);
 	split_free(split_argv);
 }
