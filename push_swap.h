@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:43:11 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 20:55:20 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/06 11:18:16 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_ps	*push(t_ps **in, t_ps *out);
 t_ps	*rotate(t_ps *cur);
 t_ps	*reverse_rotate(t_ps *cur);
 t_ps	*t_ps_new_node(int num, t_ps *next, t_ps *prev);
+t_ps	*stack_init(t_ps **stack, t_ps *lst, char **argv);
 int	    err_msg(void);
 void	split_free(char **input);
 char	*convert(char **argv);

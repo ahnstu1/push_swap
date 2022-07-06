@@ -6,29 +6,11 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/04 21:02:27 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/06 11:18:22 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_ps	*stack_init(t_ps **stack, char **argv)
-{
-	t_ps    *cur;
-    int     idx;
-    int     num;
-
-    idx = 0;
-    *stack = t_ps_new_node(ft_atoi(argv[idx]), NULL, NULL);
-    cur = *stack;
-    while (argv[++idx])
-    {
-        num = ft_atoi(argv[idx]);
-        cur -> next = t_ps_new_node(ft_atoi(argv[idx]), NULL, cur);
-		cur = cur -> next;
-    }
-	return (*stack);
-}
 
 /*
 void	lst_test(t_ps *lst)
@@ -54,6 +36,16 @@ void	lst_test(t_ps *lst)
 }
 */
 
+t_ps	*lst_front(t_ps *lst)
+{
+	t_ps	*ret;
+
+	ret = lst;
+	while (ret -> prev)
+		ret = ret -> prev;
+	return (ret);
+}
+
 int	main(int argc, char **argv)
 {
 	t_ps	*lst;
@@ -69,8 +61,10 @@ int	main(int argc, char **argv)
 		err_msg();
 	free(convert_argv);
 	lst = lst_init(&lst, split_argv);
+	//lst_test(lst);
 	if (!lst)
 		err_msg();
-	stack_init(&stack_a, split_argv);
+	stack_init(&stack_a, lst_front(lst), split_argv);
+	//lst_test(stack_a);
 	split_free(split_argv);
 }
