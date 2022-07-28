@@ -50,6 +50,7 @@ int	main(int argc, char **argv)
 {
 	t_ps	*lst;
 	t_ps	*stack_a;
+	t_ps	*stack_b;
 	char	*convert_argv;
 	char	**split_argv;
 
@@ -63,6 +64,7 @@ int	main(int argc, char **argv)
 	lst = lst_init(&lst, split_argv);
 	if (!lst)
 		err_msg();
-	stack_init(&stack_a, lst_front(lst), split_argv);
+	stack_a_init(&stack_a, lst_front(lst), split_argv);
 	split_free(split_argv);
+	stack_b_init(&stack_a, &stack_b);
 }

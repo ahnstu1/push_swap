@@ -29,7 +29,7 @@ int	crd_comp(t_ps *lst, int num)
 	return (ret);
 }
 
-t_ps	*stack_init(t_ps **stack, t_ps *lst, char **argv)
+t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv)
 {
 	t_ps	*cur;
 	int		idx;
@@ -45,4 +45,9 @@ t_ps	*stack_init(t_ps **stack, t_ps *lst, char **argv)
 		cur = cur -> next;
 	}
 	return (*stack);
+}
+
+t_ps	*stack_b_init(t_ps **stack_a, t_ps **stack_b)
+{
+	
 }

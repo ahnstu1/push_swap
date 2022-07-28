@@ -31,6 +31,7 @@ t_ps	*rotate(t_ps *cur);
 t_ps	*reverse_rotate(t_ps *cur);
 t_ps	*t_ps_new_node(int num, t_ps *next, t_ps *prev);
 t_ps	*stack_init(t_ps **stack, t_ps *lst, char **argv);
+t_ps	*stack_b_init(t_ps **stack_a, t_ps **stack_b);
 int		err_msg(void);
 void	split_free(char **input);
 char	*convert(char **argv);
