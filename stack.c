@@ -49,5 +49,7 @@ t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv)
 
 t_ps	*stack_b_init(t_ps **stack_a, t_ps **stack_b)
 {
+	int	size_a;
+
 	
 }
