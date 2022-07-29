@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:17:13 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/06 11:28:24 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/30 03:11:26 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,24 @@ t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv)
 	return (*stack);
 }
 
-t_ps	*stack_b_init(t_ps *stack_a, t_ps *stack_b, int size)
+void	*stack_b_init(t_pstp *top, int size)
 {
 	int		count;
 
 	count = size;
 	while (count < size / 3)
 	{
-		if (stack_a -> num < size / 3)
+		if (top -> a_top -> num < size / 3)
 		{
-			stack_b = stack_a;
-			stack_a = push(&stack_b, stack_a);
-			count--;
+			pb(top);
 		}
-		else if (stack_a -> num < size / 3 * 2)
+		else if (top -> a_top -> num < size * 2 / 3)
 		{
-			stack_b = stack_a;
-			stack_a = push(&stack_b, stack_a);
-			stack_b = rotate(stack_b);
+			pb(top);
+			rotate(top -> b_top);
 			count--;
 		}
 		else
-			stack_a = rotate(stack_a);
+			rotate(top -> a_top);
 	}
 }

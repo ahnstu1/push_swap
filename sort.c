@@ -17,26 +17,27 @@ void    hard_three(t_ps *stack)
     trd = stack -> next -> next -> num;
     if (fst > snd && snd > trd && fst > trd)
     {
-        stack = swap(stack);
-        stack = reverse_rotate(stack);
+        swap(stack);
+        reverse_rotate(stack);
     }
     else if (fst > snd && snd < trd && fst > trd)
-        stack = rotate(stack);
+        rotate(stack);
     else if (fst < snd && snd > trd && fst < trd)
     {
-        stack = swap(stack);
-        stack = rotate(stack);
+       swap(stack);
+        rotate(stack);
     }
     else if (fst > snd && snd < trd && fst < trd)
-        stack = swap(stack);
+        swap(stack);
     else if (fst < snd && snd > trd && fst > trd)
-        stack = reverse_rotate(stack);
+        reverse_rotate(stack);
 }
 
 void    sort(t_ps *stack_a)
 {
 	int		size;
 	t_ps	*stack_b;
+    t_pstp	*top;
 
 	size = get_size(stack_a);
 	if (size == 2)
@@ -45,7 +46,12 @@ void    sort(t_ps *stack_a)
 		hard_three(stack_a);
 	else
 	{
-		stack_b_init(stack_a, stack_b, size);
+        top -> a_top = stack_a;
+        top -> b_top -> num = -1;
+		stack_b_init(top, size);
+        printf("\n----stack_b_init_after----");
+        lst_test(stack_a);
+        printf("\n----stack_b----\n");
 		lst_test(stack_b);
 	}
 }

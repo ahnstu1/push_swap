@@ -6,7 +6,7 @@
 #    By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 16:30:03 by hahn              #+#    #+#              #
-#    Updated: 2022/07/06 11:20:43 by hahn             ###   ########.fr        #
+#    Updated: 2022/07/30 01:53:03 by hahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,14 @@ OBJS = main.o \
 		err.o \
 		stack.o \
 		sort.o \
-		sort_utils.o
+		sort_utils.o \
+		rule_simply.o
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make all -C $(LIBFT)
-	cc -Llibft -lft $(OBJS) -o $(NAME)
+	cc $(OBJS) -o $(NAME) -Llibft -lft
 	
 clean:
 	make clean -C $(LIBFT)

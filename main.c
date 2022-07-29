@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/06 11:31:32 by hahn             ###   ########.fr       */
+/*   Updated: 2022/07/30 04:04:36 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void lst_test(t_ps *l)
 		lst = lst -> prev;
 	idx = 0;
 	if (lst -> prev == NULL)
-		printf("\n lst -> prev is NULL \n");
+		printf("\n lst -> prev is NULL");
 	while (lst -> next)
 	{
-		printf("\n idx : %d, num : %d \n", idx++, lst -> num);
+		printf("\n idx : %d, num : %d", idx++, lst -> num);
 		lst = lst -> next;
 	}
-	printf("\n idx : %d, num : %d \n", idx, lst -> num);
+	printf("\n idx : %d, num : %d", idx, lst -> num);
 }
 
 t_ps	*lst_front(t_ps *lst)
@@ -82,8 +82,14 @@ int	main(int argc, char **argv)
 	if (!lst)
 		err_msg();
 	stack_a_init(&stack_a, lst_front(lst), split_argv);
-	split_free(split_argv);
-	lst_test(stack_a);
-	sort(stack_a);
-	//lst_test(stack_a);
+	t_pstp *top;
+	top -> a_top = lst_front(stack_a);
+	top -> size_a = get_size(stack_a);
+	top -> b_top -> num = -1;
+	top -> size_b = 0;
+	pb(top);
+	printf("\n a : %d", top ->a_top->num);
+	printf("\n b : %d", top ->b_top->num);
+	//split_free(split_argv);
+	//sort(stack_a);
 }
