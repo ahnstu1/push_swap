@@ -24,6 +24,7 @@ typedef struct s_ps
 	int			num;
 }	t_ps;
 
+void lst_test(t_ps *l);
 t_ps	*lst_init(t_ps **lst, char **argv);
 t_ps	*swap(t_ps *cur);
 t_ps	*push(t_ps **in, t_ps *out);
@@ -31,9 +32,12 @@ t_ps	*rotate(t_ps *cur);
 t_ps	*reverse_rotate(t_ps *cur);
 t_ps	*t_ps_new_node(int num, t_ps *next, t_ps *prev);
 t_ps	*stack_init(t_ps **stack, t_ps *lst, char **argv);
-t_ps	*stack_b_init(t_ps **stack_a, t_ps **stack_b);
+t_ps	*stack_b_init(t_ps *stack_a, t_ps *stack_b, int size);
+t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv);
 int		err_msg(void);
+int		get_size(t_ps *stack);
 void	split_free(char **input);
+void    sort(t_ps *stack_a);
 char	*convert(char **argv);
 int		argv_check(char	**argv);
 

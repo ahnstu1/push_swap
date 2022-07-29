@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+//CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft
 NAME = push_swap
@@ -18,7 +18,9 @@ OBJS = main.o \
 		lst.o \
 		rule.o \
 		err.o \
-		stack.o
+		stack.o \
+		sort.o \
+		sort_utils.o
 
 all: $(NAME)
 

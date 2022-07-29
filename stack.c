@@ -47,9 +47,27 @@ t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv)
 	return (*stack);
 }
 
-t_ps	*stack_b_init(t_ps **stack_a, t_ps **stack_b)
+t_ps	*stack_b_init(t_ps *stack_a, t_ps *stack_b, int size)
 {
-	int	size_a;
+	int		count;
 
-	
+	count = size;
+	while (count < size / 3)
+	{
+		if (stack_a -> num < size / 3)
+		{
+			stack_b = stack_a;
+			stack_a = push(&stack_b, stack_a);
+			count--;
+		}
+		else if (stack_a -> num < size / 3 * 2)
+		{
+			stack_b = stack_a;
+			stack_a = push(&stack_b, stack_a);
+			stack_b = rotate(stack_b);
+			count--;
+		}
+		else
+			stack_a = rotate(stack_a);
+	}
 }

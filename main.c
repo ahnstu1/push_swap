@@ -35,6 +35,24 @@ void	lst_test(t_ps *lst)
 	printf("\n idx : %d, num : %d \n", idx, lst -> num);
 }
 */
+void lst_test(t_ps *l)
+{
+	int		idx;
+	t_ps	*lst;
+
+	lst = l;
+	while (lst -> prev)
+		lst = lst -> prev;
+	idx = 0;
+	if (lst -> prev == NULL)
+		printf("\n lst -> prev is NULL \n");
+	while (lst -> next)
+	{
+		printf("\n idx : %d, num : %d \n", idx++, lst -> num);
+		lst = lst -> next;
+	}
+	printf("\n idx : %d, num : %d \n", idx, lst -> num);
+}
 
 t_ps	*lst_front(t_ps *lst)
 {
@@ -50,7 +68,6 @@ int	main(int argc, char **argv)
 {
 	t_ps	*lst;
 	t_ps	*stack_a;
-	t_ps	*stack_b;
 	char	*convert_argv;
 	char	**split_argv;
 
@@ -66,5 +83,7 @@ int	main(int argc, char **argv)
 		err_msg();
 	stack_a_init(&stack_a, lst_front(lst), split_argv);
 	split_free(split_argv);
-	stack_b_init(&stack_a, &stack_b);
+	lst_test(stack_a);
+	sort(stack_a);
+	//lst_test(stack_a);
 }

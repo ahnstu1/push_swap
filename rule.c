@@ -20,7 +20,8 @@ t_ps	*swap(t_ps *cur)
 		return (cur);
 	next = cur -> next;
 	cur -> next = next -> next;
-	next -> next -> prev = cur;
+	if (next -> next)
+		next -> next -> prev = cur;
 	cur -> prev = next;
 	next -> next = cur;
 	next -> prev = NULL;
