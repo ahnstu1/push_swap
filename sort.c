@@ -1,57 +1,77 @@
 #include "push_swap.h"
 
-void	hard_two(t_ps *stack)
+void	hard_two(t_psts *ts)
 {
-	if (stack -> num > stack -> next -> num)
-		swap(stack);
+	if (ts -> top_a -> num > ts -> top_a -> next -> num)
+		sa(ts);
 }
 
-void    hard_three(t_ps *stack)
+void    hard_three(t_psts *ts)
 {
     int fst;
     int snd;
     int trd;
 
-    fst = stack -> num;
-    snd = stack -> next -> num;
-    trd = stack -> next -> next -> num;
+    fst = ts -> top_a -> num;
+    snd = ts -> top_a -> next -> num;
+    trd = ts -> top_a -> next -> next -> num;
     if (fst > snd && snd > trd && fst > trd)
     {
-        swap(stack);
-        reverse_rotate(stack);
+		sa(ts);
+		rra(ts);
     }
     else if (fst > snd && snd < trd && fst > trd)
-        rotate(stack);
+		ra(ts);
     else if (fst < snd && snd > trd && fst < trd)
     {
-       swap(stack);
-        rotate(stack);
+		sa(ts);
+		ra(ts);
     }
     else if (fst > snd && snd < trd && fst < trd)
-        swap(stack);
+		sa(ts);
     else if (fst < snd && snd > trd && fst > trd)
-        reverse_rotate(stack);
+		rra(ts);
 }
 
-void    sort(t_ps *stack_a)
+void    sort_big(t_psts *ts)
+{
+    int count;
+    while (ts -> size_b != 1)
+    {
+        count = 0;
+        if (!pur_finder(ts))
+        {
+            while (ts -> top_b -> num != ts -> top_a -> num - 1)
+            {
+                rb(ts);
+                count++;
+            }
+            pa(ts);
+        }
+        else
+        {
+            while (ts -> top_b -> num != ts -> top_a -> num - 1)
+            {
+                rrb(ts);
+                count++;
+            }
+            pa(ts);
+        }
+    }
+}
+
+void    sort(t_ps *stack_a, t_psts *ts)
 {
 	int		size;
-	t_ps	*stack_b;
-    t_pstp	*top;
 
-	size = get_size(stack_a);
-	if (size == 2)
-		hard_two(stack_a);
-	else if (size == 3)
-		hard_three(stack_a);
+	if (ts -> size_a == 2)
+		hard_two(ts);
+	else if (ts -> size_a == 3)
+		hard_three(ts);
 	else
 	{
-        top -> a_top = stack_a;
-        top -> b_top -> num = -1;
-		stack_b_init(top, size);
-        printf("\n----stack_b_init_after----");
-        lst_test(stack_a);
-        printf("\n----stack_b----\n");
-		lst_test(stack_b);
+		stack_b_init(ts);
+        sort_big(ts);
+        write(1, "pa\n", 3);
 	}
 }

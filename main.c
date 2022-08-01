@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/30 04:04:36 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/02 01:41:26 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,31 @@ t_ps	*lst_front(t_ps *lst)
 	return (ret);
 }
 
+t_psts	*ts_init(t_ps *stack)
+{
+	t_psts	*ts;
+
+	ts = (t_psts *)malloc(sizeof(t_psts) * 1);
+	ts -> top_a = stack;
+	ts -> top_b = NULL;
+	ts -> size_a = get_size(stack);
+	ts -> size_b = 0;
+	ts -> size = ts -> size_a;
+	ts -> count = 0;
+	ts -> chunk = ts -> size_a / 50 + 5;
+	ts -> mid = ts -> size_a / 2;
+	ts -> pivot = ts -> mid + ts -> chunk;
+	ts -> pivot1 = ts -> mid - ts -> chunk;
+	ts -> pviot_con = ts -> chunk;
+	ts -> pviot1_con = ts -> chunk;
+	return (ts);
+}
+
 int	main(int argc, char **argv)
 {
 	t_ps	*lst;
 	t_ps	*stack_a;
+	t_psts	*ts;
 	char	*convert_argv;
 	char	**split_argv;
 
@@ -82,14 +103,8 @@ int	main(int argc, char **argv)
 	if (!lst)
 		err_msg();
 	stack_a_init(&stack_a, lst_front(lst), split_argv);
-	t_pstp *top;
-	top -> a_top = lst_front(stack_a);
-	top -> size_a = get_size(stack_a);
-	top -> b_top -> num = -1;
-	top -> size_b = 0;
-	pb(top);
-	printf("\n a : %d", top ->a_top->num);
-	printf("\n b : %d", top ->b_top->num);
-	//split_free(split_argv);
-	//sort(stack_a);
+	ts = ts_init(stack_a);
+	split_free(split_argv);
+	sort(stack_a, ts);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:43:11 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/30 03:09:47 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/02 01:17:16 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,47 @@ typedef struct s_ps
 	int			num;
 }	t_ps;
 
-typedef	struct s_pstp
+typedef	struct s_psts
 {
-	t_ps	*a_top;
-	t_ps	*b_top;
+	t_ps	*top_a;
+	t_ps	*top_b;
 	int		size_a;
 	int		size_b;
-}	t_pstp;
+	int		size;
+	int		mid;
+	int		chunk;
+	int		pivot;
+	int		pivot1;
+	int		pviot_con;
+	int		pviot1_con;
+	int		count;
+}	t_psts;
 
 
 void 	lst_test(t_ps *l);
 //
 t_ps	*lst_init(t_ps **lst, char **argv);
 void	swap(t_ps *cur);
-void	push(t_ps *in, t_ps *out, int size_in, int size_out);
-void	rotate(t_ps *cur);
-void	sa(t_pstp *top);
-void	sb(t_pstp *top);
-void	pa(t_pstp *top);
-void	pb(t_pstp *top);
-t_ps	*reverse_rotate(t_ps *cur);
+void	push(t_ps **in, t_ps **out, int size_in, int size_out);
+int		pur_finder(t_psts *ts);
+void	sa(t_psts *ts);
+void	sb(t_psts *ts);
+void	pa(t_psts *ts);
+void	pb(t_psts *ts);
+void	ra(t_psts *ts);
+void	rb(t_psts *ts);
+void	rra(t_psts *ts);
+void	rrb(t_psts *ts);
+void	rotate(t_ps **cur);
+void	*reverse_rotate(t_ps **cur);
 t_ps	*t_ps_new_node(int num, t_ps *next, t_ps *prev);
 t_ps	*stack_init(t_ps **stack, t_ps *lst, char **argv);
-void	*stack_b_init(t_pstp *top, int size);
+void	*stack_b_init(t_psts *top);
 t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv);
 int		err_msg(void);
 int		get_size(t_ps *stack);
 void	split_free(char **input);
-void    sort(t_ps *stack_a);
+void    sort(t_ps *stack_a, t_psts *ts);
 char	*convert(char **argv);
 int		argv_check(char	**argv);
 

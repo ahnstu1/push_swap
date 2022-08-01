@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:17:13 by hahn              #+#    #+#             */
-/*   Updated: 2022/07/30 03:11:26 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/02 01:04:33 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,30 @@ t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv)
 	return (*stack);
 }
 
-void	*stack_b_init(t_pstp *top, int size)
+void	*stack_b_init(t_psts *ts)
 {
-	int		count;
-
-	count = size;
-	while (count < size / 3)
+	while (ts -> size_a > 1)
 	{
-		if (top -> a_top -> num < size / 3)
+		if (ts -> top_a -> num < ts -> pivot && ts -> top_a -> num + 1 \
+			!= ts -> size && ts -> top_a -> num >= ts -> mid && ts -> pivot++)
+			pb(ts);
+		else if (ts -> top_a -> num >= ts -> pivot1 &&
+			ts -> top_a -> num < ts -> mid && ts -> pivot1--)
 		{
-			pb(top);
-		}
-		else if (top -> a_top -> num < size * 2 / 3)
-		{
-			pb(top);
-			rotate(top -> b_top);
-			count--;
+			pb(ts);
+			rb(ts);
 		}
 		else
-			rotate(top -> a_top);
+			ra(ts);
+		if (!ts -> pviot_con)
+		{
+			ts -> pivot += ts -> chunk;
+			ts -> pviot_con = ts -> chunk;
+		}
+		if (!ts -> pviot1_con)
+		{
+			ts -> pivot1 -= ts -> chunk;
+			ts -> pviot1_con = ts -> chunk;
+		}
 	}
 }
