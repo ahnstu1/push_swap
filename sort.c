@@ -33,30 +33,77 @@ void    hard_three(t_psts *ts)
 		rra(ts);
 }
 
+void    hard_f(t_psts *ts)
+{
+	int	size;
+
+	while (ts -> size_a > 3)
+	{
+		if (ts -> top_a -> num == 0 || ts -> top_a -> num == 1)
+			pb(ts);
+		else
+			ra(ts);
+	}
+	hard_three(ts);
+	pa(ts);
+	pa(ts);
+	hard_three(ts);
+}
+
+void	sort_rb(t_psts *ts)
+{
+	int	count;
+	int	tar;
+
+	tar = ts -> top_a -> num - 1;
+	count = 1;
+	while (ts -> top_b -> num != tar)
+	{
+		if (ts -> top_b -> num == tar - count && count != 2)
+		{
+			count++;
+			pa(ts);
+		}
+		else
+			rb(ts);
+
+	}
+	pa(ts);
+	if (count == 2)
+		hard_two(ts);
+}
+
+void	sort_rrb(t_psts *ts)
+{
+	int	count;
+	int	tar;
+
+	tar = ts -> top_a -> num - 1;
+	count = 1;
+	while (ts -> top_b -> num != tar)
+	{
+		if (ts -> top_b -> num == tar - count && count != 2)
+		{
+			count++;
+			pa(ts);
+		}
+		else
+			rrb(ts);
+
+	}
+	pa(ts);
+	if (count == 2)
+		hard_two(ts);
+}
+
 void    sort_big(t_psts *ts)
 {
-    int count;
-    while (ts -> size_b != 1)
+    while (ts -> size_b > 1)
     {
-        count = 0;
-        if (!pur_finder(ts))
-        {
-            while (ts -> top_b -> num != ts -> top_a -> num - 1)
-            {
-                rb(ts);
-                count++;
-            }
-            pa(ts);
-        }
+        if (!pur_finder(ts, ts -> top_a -> num - 1, 0, 1))
+			sort_rb(ts);
         else
-        {
-            while (ts -> top_b -> num != ts -> top_a -> num - 1)
-            {
-                rrb(ts);
-                count++;
-            }
-            pa(ts);
-        }
+            sort_rrb(ts);
     }
 }
 
@@ -68,10 +115,12 @@ void    sort(t_ps *stack_a, t_psts *ts)
 		hard_two(ts);
 	else if (ts -> size_a == 3)
 		hard_three(ts);
-	else
+	else if (ts -> size_a <= 5)
+		hard_f(ts);
+	else if (ts -> size_a > 5)
 	{
 		stack_b_init(ts);
         sort_big(ts);
-        write(1, "pa\n", 3);
+        pa(ts);
 	}
 }

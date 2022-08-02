@@ -6,7 +6,7 @@
 #    By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 16:30:03 by hahn              #+#    #+#              #
-#    Updated: 2022/07/31 01:18:30 by hahn             ###   ########.fr        #
+#    Updated: 2022/08/02 02:18:22 by hahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make all -C $(LIBFT)
-	cc $(OBJS) -o $(NAME) -Llibft -lft -g -fsanitize=address
+	cc $(OBJS) -o $(NAME) -Llibft -lft
 	
 clean:
 	make clean -C $(LIBFT)

@@ -16,20 +16,26 @@ void	sb(t_psts *ts)
 
 void	pa(t_psts *ts)
 {
-	push(&ts -> top_a, &ts -> top_b, ts -> size_a, ts -> size_b);
-	ts -> size_a++;
-	ts -> size_b--;
-	write(1, "pa\n", 3);
-	ts -> count++;
+	if (ts -> size_b)
+	{
+		push(&ts -> top_a, &ts -> top_b, ts -> size_a, ts -> size_b);
+		ts -> size_a++;
+		ts -> size_b--;
+		write(1, "pa\n", 3);
+		ts -> count++;
+	}
 }
 
 void	pb(t_psts *ts)
 {
-	push(&ts -> top_b, &ts -> top_a, ts -> size_b, ts -> size_a);
-	ts -> size_a--;
-	ts -> size_b++;
-	write(1, "pb\n", 3);
-	ts -> count++;
+	if (ts -> size_a)
+	{
+		push(&ts -> top_b, &ts -> top_a, ts -> size_b, ts -> size_a);
+		ts -> size_a--;
+		ts -> size_b++;
+		write(1, "pb\n", 3);
+		ts -> count++;
+	}
 }
 
 void	ss(t_psts *ts)

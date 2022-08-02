@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:43:11 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/02 01:17:16 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/02 22:30:16 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void 	lst_test(t_ps *l);
 t_ps	*lst_init(t_ps **lst, char **argv);
 void	swap(t_ps *cur);
 void	push(t_ps **in, t_ps **out, int size_in, int size_out);
-int		pur_finder(t_psts *ts);
+int		pur_finder(t_psts *ts, int pur, int count, int count1);
 void	sa(t_psts *ts);
 void	sb(t_psts *ts);
 void	pa(t_psts *ts);
