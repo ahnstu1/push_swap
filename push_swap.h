@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:43:11 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/02 22:30:16 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 06:59:54 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_ps
 	int			num;
 }	t_ps;
 
-typedef	struct s_psts
+typedef struct s_psts
 {
 	t_ps	*top_a;
 	t_ps	*top_b;
@@ -40,13 +40,13 @@ typedef	struct s_psts
 	int		count;
 }	t_psts;
 
-
-void 	lst_test(t_ps *l);
-//
 t_ps	*lst_init(t_ps **lst, char **argv);
 void	swap(t_ps *cur);
 void	push(t_ps **in, t_ps **out, int size_in, int size_out);
 int		pur_finder(t_psts *ts, int pur, int count, int count1);
+void	hard_f(t_psts *ts);
+void	hard_three(t_psts *ts);
+void	hard_two(t_psts *ts);
 void	sa(t_psts *ts);
 void	sb(t_psts *ts);
 void	pa(t_psts *ts);
@@ -56,15 +56,15 @@ void	rb(t_psts *ts);
 void	rra(t_psts *ts);
 void	rrb(t_psts *ts);
 void	rotate(t_ps **cur);
-void	*reverse_rotate(t_ps **cur);
+void	reverse_rotate(t_ps **cur);
 t_ps	*t_ps_new_node(int num, t_ps *next, t_ps *prev);
 t_ps	*stack_init(t_ps **stack, t_ps *lst, char **argv);
-void	*stack_b_init(t_psts *top);
+void	stack_b_init(t_psts *top);
 t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv);
 int		err_msg(void);
 int		get_size(t_ps *stack);
 void	split_free(char **input);
-void    sort(t_ps *stack_a, t_psts *ts);
+void	sort(t_psts *ts);
 char	*convert(char **argv);
 int		argv_check(char	**argv);
 

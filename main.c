@@ -6,53 +6,11 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/03 00:22:34 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 07:00:37 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-void	lst_test(t_ps *lst)
-{
-	int		idx;
-
-	idx = 0;
-	if (lst -> prev == NULL)
-		printf("\n lst -> prev is NULL \n");
-	while (lst -> next)
-	{
-		printf("\n idx : %d, num : %d \n", idx++, lst -> num);
-		lst = lst -> next;
-	}
-	printf("\n idx : %d, num : %d \n", idx, lst -> num);
-	printf("\n reverse start \n");
-	while (lst -> prev)
-	{
-		printf("\n idx : %d, num : %d \n", idx--, lst -> num);
-		lst = lst -> prev;
-	}
-	printf("\n idx : %d, num : %d \n", idx, lst -> num);
-}
-*/
-void lst_test(t_ps *l)
-{
-	int		idx;
-	t_ps	*lst;
-
-	lst = l;
-	while (lst -> prev)
-		lst = lst -> prev;
-	idx = 0;
-	if (lst -> prev == NULL)
-		printf("\n lst -> prev is NULL");
-	while (lst -> next)
-	{
-		printf("\n idx : %d, num : %d", idx++, lst -> num);
-		lst = lst -> next;
-	}
-	printf("\n idx : %d, num : %d", idx, lst -> num);
-}
 
 t_ps	*lst_front(t_ps *lst)
 {
@@ -91,7 +49,7 @@ int	main(int argc, char **argv)
 	t_psts	*ts;
 	char	*convert_argv;
 	char	**split_argv;
-	
+
 	if (argc < 2 || argv_check(argv))
 		err_msg();
 	if (argc == 2)
@@ -107,6 +65,6 @@ int	main(int argc, char **argv)
 	stack_a_init(&stack_a, lst_front(lst), split_argv);
 	ts = ts_init(stack_a);
 	split_free(split_argv);
-	sort(stack_a, ts);
+	sort(ts);
 	exit(0);
 }

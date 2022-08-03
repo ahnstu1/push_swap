@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:24:52 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/02 01:18:56 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 06:59:07 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	push(t_ps **in, t_ps **out, int size_in, int size_out)
 	if (!size_out)
 		return ;
 	tmp = *out;
-	if ((*out) -> next)
+	if ((*out)-> next)
 	{
-		*out = (*out) -> next;
-		(*out) -> prev = NULL;
+		*out = (*out)-> next;
+		(*out)-> prev = NULL;
 	}
 	if (!size_in)
 	{
@@ -44,7 +44,7 @@ void	push(t_ps **in, t_ps **out, int size_in, int size_out)
 	else
 	{
 		tmp -> next = *in;
-		(*in) -> prev = tmp;
+		(*in)-> prev = tmp;
 		*in = tmp;
 	}
 }
@@ -54,25 +54,25 @@ void	rotate(t_ps **cur)
 	t_ps	*ret;
 	t_ps	*tmp;
 
-	if (*cur && (*cur) -> next)
+	if (*cur && (*cur)-> next)
 	{
-		ret = (*cur) -> next;
+		ret = (*cur)-> next;
 		tmp = *cur;
 		while (tmp -> next)
 			tmp = tmp -> next;
 		tmp -> next = *cur;
-		(*cur) -> prev = tmp;
-		(*cur) -> next = NULL;
+		(*cur)-> prev = tmp;
+		(*cur)-> next = NULL;
 		ret -> prev = NULL;
 		*cur = ret;
 	}
 }
 
-void	*reverse_rotate(t_ps **cur)
+void	reverse_rotate(t_ps **cur)
 {
 	t_ps	*ret;
 
-	if (*cur && (*cur) -> next)
+	if (*cur && (*cur)-> next)
 	{
 		ret = *cur;
 		while (ret -> next)
@@ -80,7 +80,7 @@ void	*reverse_rotate(t_ps **cur)
 		ret -> prev -> next = NULL;
 		ret -> prev = NULL;
 		ret -> next = (*cur);
-		(*cur) -> prev = ret;
+		(*cur)-> prev = ret;
 		*cur = ret;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:17:13 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/02 01:04:33 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 06:59:16 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv)
 	return (*stack);
 }
 
-void	*stack_b_init(t_psts *ts)
+void	stack_b_init(t_psts *ts)
 {
 	while (ts -> size_a > 1)
 	{
 		if (ts -> top_a -> num < ts -> pivot && ts -> top_a -> num + 1 \
 			!= ts -> size && ts -> top_a -> num >= ts -> mid && ts -> pivot++)
 			pb(ts);
-		else if (ts -> top_a -> num >= ts -> pivot1 &&
+		else if (ts -> top_a -> num >= ts -> pivot1 && \
 			ts -> top_a -> num < ts -> mid && ts -> pivot1--)
 		{
 			pb(ts);

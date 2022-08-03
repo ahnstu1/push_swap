@@ -6,11 +6,11 @@
 #    By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 16:30:03 by hahn              #+#    #+#              #
-#    Updated: 2022/08/02 02:18:22 by hahn             ###   ########.fr        #
+#    Updated: 2022/08/04 06:57:45 by hahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-//CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft
 NAME = push_swap
