@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 06:47:32 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/04 06:59:48 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 07:17:00 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,39 @@ void	sort_big(t_psts *ts)
 	}
 }
 
+int	sorted_check(t_psts *ts)
+{
+	t_ps 	*stack_a;
+	int		num;
+
+	num = 0;
+	stack_a = ts -> top_a;
+	while (stack_a -> next)
+	{
+		if (stack_a -> num != num++)
+			return (1);
+		stack_a = stack_a -> next;
+	}
+	if (stack_a -> num != num)
+			return (1);
+	return (0);
+}
+
 void	sort(t_psts *ts)
 {
-	if (ts -> size_a == 2)
-		hard_two(ts);
-	else if (ts -> size_a == 3)
-		hard_three(ts);
-	else if (ts -> size_a <= 5)
-		hard_f(ts);
-	else if (ts -> size_a > 5)
+	if (sorted_check(ts))
 	{
-		stack_b_init(ts);
-		sort_big(ts);
-		pa(ts);
+		if (ts -> size_a == 2)
+			hard_two(ts);
+		else if (ts -> size_a == 3)
+			hard_three(ts);
+		else if (ts -> size_a <= 5)
+			hard_f(ts);
+		else if (ts -> size_a > 5)
+		{
+			stack_b_init(ts);
+			sort_big(ts);
+			pa(ts);
+		}
 	}
 }
