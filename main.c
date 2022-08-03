@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/04 08:09:35 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 08:18:52 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_psts	*ts_init(t_ps *stack)
 	t_psts	*ts;
 
 	ts = (t_psts *)malloc(sizeof(t_psts) * 1);
+	if (!ts)
+		return (0);
 	ts -> top_a = stack;
 	ts -> top_b = NULL;
 	ts -> size_a = get_size(stack);
