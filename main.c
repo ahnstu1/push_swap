@@ -34,7 +34,7 @@ t_psts	*ts_init(t_ps *stack)
 	ts -> size_a = get_size(stack);
 	ts -> size_b = 0;
 	ts -> size = ts -> size_a;
-	ts -> chunk = ts -> size_a / 50 + 5;
+	ts -> chunk = ts -> size_a / 25 + 5;
 	ts -> mid = ts -> size_a / 2;
 	ts -> pivot = ts -> mid + ts -> chunk;
 	ts -> pivot1 = ts -> mid - ts -> chunk;
@@ -53,8 +53,6 @@ int	main(int argc, char **argv)
 
 	if (argc < 2 || argv_check(argv))
 		err_msg();
-	if (argc == 2 && num_vali(argv[1]))
-		exit(0);
 	convert_argv = convert(argv);
 	split_argv = ft_split(convert_argv, ' ');
 	if (!split_argv)
