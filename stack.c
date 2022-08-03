@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:17:13 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/04 06:59:16 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 08:04:43 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ t_ps	*stack_a_init(t_ps **stack, t_ps *lst, char **argv)
 	int		num;
 
 	idx = 0;
+	num_vali(argv[idx]);
 	*stack = t_ps_new_node(crd_comp(lst, ft_atoi(argv[idx])), NULL, NULL);
 	cur = *stack;
 	while (argv[++idx])
 	{
+		num_vali(argv[idx]);
 		num = ft_atoi(argv[idx]);
 		cur -> next = t_ps_new_node(crd_comp(lst, num), NULL, cur);
 		cur = cur -> next;

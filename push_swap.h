@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:43:11 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/04 07:38:39 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 08:09:14 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		pur_finder(t_psts *ts, int pur, int count, int count1);
 void	hard_f(t_psts *ts);
 void	hard_three(t_psts *ts);
 void	hard_two(t_psts *ts);
+int		num_vali(char *argv);
 void	sa(t_psts *ts);
 void	sb(t_psts *ts);
 void	pa(t_psts *ts);

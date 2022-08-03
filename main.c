@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/04 07:38:34 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 08:09:35 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2 || argv_check(argv))
 		err_msg();
-	if (argc == 2)
+	if (argc == 2 && num_vali(argv[1]))
 		exit(0);
 	convert_argv = convert(argv);
 	split_argv = ft_split(convert_argv, ' ');
