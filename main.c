@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:15:14 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/04 07:00:37 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 07:38:34 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_psts	*ts_init(t_ps *stack)
 	ts -> size_a = get_size(stack);
 	ts -> size_b = 0;
 	ts -> size = ts -> size_a;
-	ts -> count = 0;
 	ts -> chunk = ts -> size_a / 50 + 5;
 	ts -> mid = ts -> size_a / 2;
 	ts -> pivot = ts -> mid + ts -> chunk;

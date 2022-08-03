@@ -6,7 +6,7 @@
 /*   By: hahn <hahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 20:43:11 by hahn              #+#    #+#             */
-/*   Updated: 2022/08/04 06:59:54 by hahn             ###   ########.fr       */
+/*   Updated: 2022/08/04 07:38:39 by hahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_psts
 	int		pivot1;
 	int		pviot_con;
 	int		pviot1_con;
-	int		count;
 }	t_psts;
 
 t_ps	*lst_init(t_ps **lst, char **argv);
